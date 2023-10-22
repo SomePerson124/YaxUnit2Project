@@ -39,10 +39,76 @@ public class LinearEquation {
             }
             return "y = " + yIntercept();
         }
-        if (equivalent) {
-            return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x + " + (int) yIntercept();
+        if (slope() == (int) (slope())) {
+            if (slope() == 1.0 || slope() == -1.0) {
+                if (slope() == 1.0) {
+                    if (yIntercept() == 0) {
+                        return "y = x";
+                    } else {
+                        if (yIntercept() < 0) {
+                            return "y = x - " + Math.abs(yIntercept());
+                        } else {
+                            return "y = x + " + yIntercept();
+                        }
+                    }
+                } else {
+                    if (yIntercept() == 0) {
+                        return "y = -x";
+                    } else {
+                        if (yIntercept() < 0) {
+                            return "y = -x - " + Math.abs(yIntercept());
+                        } else {
+                            return "y = -x + " + yIntercept();
+                        }
+                    }
+                }
+            }
+            if (yIntercept() == 0) {
+                return "y = " + (int) slope() + "x";
+            } else {
+                if (yIntercept() < 0) {
+                    return "y = " + (int) slope() + "x - " + Math.abs(yIntercept());
+                } else {
+                    return "y = " + (int) slope() + "x + " + yIntercept();
+                }
+            }
+        } else {
+            int deltaY = y2 - y1;
+            int deltaX = x2 - x1;
+            if (deltaY < 0 && deltaX < 0) {
+                if (yIntercept() == 0) {
+                    return "y = " + Math.abs(deltaY) + "/" + Math.abs(deltaX) + "x";
+                } else {
+                    if (yIntercept() < 0) {
+                        return "y = " + Math.abs(deltaY) + "/" + Math.abs(deltaX) + "x - " + Math.abs(yIntercept());
+                    } else {
+                        return "y = " + Math.abs(deltaY) + "/" + Math.abs(deltaX) + "x + " + yIntercept();
+                    }
+                }
+            } else {
+                if (slope() < 0) {
+                    if (yIntercept() == 0) {
+                        return "y = -" + Math.abs(deltaY) + "/" + Math.abs(deltaX) + "x";
+                    } else {
+                        if (yIntercept() < 0) {
+                            return "y = -" + Math.abs(deltaY) + "/" + Math.abs(deltaX) + "x - " + Math.abs(yIntercept());
+                        } else {
+                            return "y = -" + Math.abs(deltaY) + "/" + Math.abs(deltaX) + "x + " + yIntercept();
+                        }
+                    }
+                } else {
+                    if (yIntercept() == 0) {
+                        return "y = " + deltaY + "/" + deltaX + "x";
+                    } else {
+                        if (yIntercept() < 0) {
+                            return "y = " + deltaY + "/" + deltaX + "x - " + Math.abs(yIntercept());
+                        } else {
+                            return "y = " + deltaY + "/" + deltaX + "x + " + yIntercept();
+                        }
+                    }
+                }
+            }
         }
-        return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x + " + yIntercept();
     }
 
     public String coordinateForX(double x) {

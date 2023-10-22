@@ -32,8 +32,15 @@ public class LinearEquation {
     }
 
     public String equation() {
+        boolean equivalent = yIntercept() == (int) yIntercept();
         if (y1 == y2) {
+            if (equivalent) {
+                return "y = " + (int) yIntercept();
+            }
             return "y = " + yIntercept();
+        }
+        if (equivalent) {
+            return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x + " + (int) yIntercept();
         }
         return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x + " + yIntercept();
     }
